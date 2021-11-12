@@ -1,0 +1,10 @@
+NN # model type, currently accept AE and NN
+nn_test # name
+INDIM 13 # input dimension
+LTDIM 1 # latent space dimension for AE output for NN
+LOSS MSE # loss function selection
+	# there must be only ONE empty/commented line between header and the model blocks
+NTWRK # denotes neural network block
+POLREG -n 5 -o 4 -pad 1 # a PolyRegression Layer
+FC 10 -a relu # a Dense (fully connected hence FC ) layer
+FC 1 -a lin

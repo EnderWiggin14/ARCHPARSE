@@ -1,0 +1,17 @@
+AE # model type, currently accept AE and NN
+test1 # name
+INDIM 13 # input dimension
+LTDIM 3 # latent space dimension for AE output for NN
+LOSS MIMSE -mse .9 -inf .1 # loss function selection
+	# there must be only ONE empty/commented line between header and the model blocks
+ENCOD # denotes encoder block
+POLREG -n 2 -o 4 -pad 3 # a PolyRegression Layer
+FC 7 -a slisin -kr l1 .000001 # a Dense (fully connected hence FC ) layer
+FC 4 -br l1 .01 -a nlrelu
+FC 3
+
+DECOD # denotes decoder block
+FC 4 -a nlrelu
+FC 7
+FC 13
+POLREG -n 2 -o 4 -pad 3
